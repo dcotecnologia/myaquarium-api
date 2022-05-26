@@ -9,13 +9,14 @@ services:
     stdin_open: true
     tty: true
     volumes:
-      - ./src:/src:rw
+      - ./src:/src
     env_file:
       - .env
     command:
       - /bin/bash
       - -c
       - |
+        bundle install --full-index --jobs 4 --retry 3
         foreman start release
         foreman start web
     environment:
@@ -23,7 +24,6 @@ services:
 
   db:
     image: postgres
-    restart: always
     volumes:
       - ./tmp/postgres:/var/lib/postgresql/data,delegated
     ports:
