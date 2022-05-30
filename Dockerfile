@@ -1,28 +1,21 @@
-FROM ruby:3.2-rc
+FROM ruby:3.1.2
 
-ENV GEM_HOME=/usr/local/lib/ruby/gems/3.2.0+1
+ENV GEM_HOME=/usr/local/lib/ruby/gems/3.1.0
 
 ENV TZ="America/Sao_Paulo"
 
-WORKDIR /src
+WORKDIR /app
+
+RUN gem update --system
 
 RUN gem uninstall -aIx
 
-RUN gem install bundler
-
 RUN gem install foreman
 
-COPY ./src/Gemfile /src/Gemfile
-
-COPY ./src/Gemfile.lock /src/Gemfile.lock
-
-# Configure the main process to run when running the image
-
-RUN bundle config mirror.https://rubygems.org http://rubygems.org
+COPY ./Gemfile /app/Gemfile
 
 RUN bundle install --full-index --jobs 4 --retry 3
 
-# Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/
 
 RUN chmod +x /usr/bin/entrypoint.sh

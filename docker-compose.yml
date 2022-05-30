@@ -9,7 +9,7 @@ services:
     stdin_open: true
     tty: true
     volumes:
-      - ./src:/src
+      - .:/app
     env_file:
       - .env
     command:
@@ -23,7 +23,7 @@ services:
       DISABLE_DATABASE_ENVIRONMENT_CHECK: 1
 
   db:
-    image: postgres
+    image: postgres:latest
     volumes:
       - ./tmp/postgres:/var/lib/postgresql/data,delegated
     ports:

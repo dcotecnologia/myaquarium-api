@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Api::V1::PostsController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   before_action :set_post, only: %i[ show update destroy ]
 
   # GET /api/v1/posts

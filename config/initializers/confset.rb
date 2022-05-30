@@ -1,7 +1,6 @@
 # frozen_string_literal: true
-require "config"
 
-Config.setup do |config|
+Confset.setup do |config|
   # Name of the constant exposing loaded settings
   config.const_name = "Settings"
 
@@ -45,25 +44,25 @@ Config.setup do |config|
 
   # Parse numeric values as integers instead of strings.
   #
-  config.env_parse_values = true
+  # config.env_parse_values = true
 
   # Validate presence and type of specific config values. Check https://github.com/dry-rb/dry-validation for details.
   #
-  config.schema do
-    required(:api).schema do
-      required(:auth).schema do
-        required(:devise_jwt_secret_key).filled
-      end
-    end
-    required(:system).schema do
-      required(:db).schema do
-        required(:host).filled
-      end
-      required(:default_email).filled(format?: /^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$/i)
-      required(:host).filled
-      required(:rails_env).filled
-    end
-  end
+  # config.schema do
+  #   required(:api).schema do
+  #     required(:auth).schema do
+  #       required(:devise_jwt_secret_key).filled
+  #     end
+  #   end
+  #   required(:system).schema do
+  #     required(:db).schema do
+  #       required(:host).filled
+  #     end
+  #     required(:default_email).filled(format?: /^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$/i)
+  #     required(:host).filled
+  #     required(:rails_env).filled
+  #   end
+  # end
 
   # Evaluate ERB in YAML config files at load time.
   #

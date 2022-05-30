@@ -1,0 +1,86 @@
+# This workflow uses actions that are not certified by GitHub.  They are
+# provided by a third-party and are governed by separate terms of service,
+# privacy policy, and support documentation.
+#
+# This workflow will install a prebuilt Ruby version, install dependencies, and
+# run tests and linters.
+name: "Ruby on Rails CI"
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - dev
+  pull_request:
+    branches:
+      - '*'
+    paths-ignore:
+      - '**.md'
+
+jobs:
+  test:
+    if: github.actor != 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:latest
+        ports:
+          - "5432:5432"
+        env:
+          POSTGRES_DB: postgres
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      GIT_SSL_NO_VERIFY: "true"
+      RAILS_ENV: "test"
+      DATABASE_HOST: "localhost"
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Cache gems
+        uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gem-bundler-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gem-bundler-
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@v1.110.0
+        with:
+          bundler: "latest"
+          bundler-cache: true
+          ruby-version: "3.1.2"
+      - name: Prepare the database
+        run: bin/rails db:create db:migrate
+      - name: Run tests
+        run: bin/rails test
+  lint:
+    if: github.actor != 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Cache gems
+        uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gem-bundler-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gem-bundler-
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@v1.110.0
+        with:
+          bundler: "latest"
+          bundler-cache: true
+          ruby-version: "3.1.2"
+      - name: Security audit dependencies
+        run: bundle exec bundler-audit --update
+      - name: Security audit application code
+        run: bundle exec brakeman -q -w2
+      - name: Lint Ruby files
+        run: bundle exec rubocop --parallel

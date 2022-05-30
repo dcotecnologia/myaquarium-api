@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-source "http://rubygems.org"
+source "https://rubygems.org"
 
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.2.0"
+ruby "3.1.2"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.3"
@@ -35,19 +35,26 @@ gem "devise-jwt", "~> 0.9"
 gem "omniauth", "~> 2.1"
 
 # Organize secrets and env vars
-gem "config-rb", "~> 1.0"
+gem "confset", github: "dcotecnologia/confset", branch: "4-getting-indexerror-when-env-has-not-tracked-keys"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem "brakeman"
+  gem "bundler-audit", "~> 0.9"
   gem "debug", platforms: %i[mri mingw x64_mingw]
-  gem "rubocop", "~> 1.29", require: false
-  gem "rubocop-minitest"
-  gem "rubocop-packaging"
-  gem "rubocop-performance"
-  gem "rubocop-rails"
+  gem "rubocop", "~> 1.30.0", require: false
+  gem "rubocop-minitest", "~> 0.20.0"
+  gem "rubocop-packaging", "~> 0.5.1"
+  gem "rubocop-performance", "~> 1.14.0"
+  gem "rubocop-rails", "~> 2.14.2"
+  gem "rubocop-rake", "~> 0.6.0"
 end
 
 group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+end
+
+group :test do
+  gem "dotenv-rails", "~> 2.1", ">= 2.1.1", require: "dotenv/rails-now"
 end

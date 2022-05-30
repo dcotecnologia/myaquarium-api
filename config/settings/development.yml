@@ -1,0 +1,11 @@
+api:
+  auth:
+    devise_jwt_secret_key: xxxxxxxxxxxxxx
+db:
+  host: <%= ENV.fetch("DATABASE_HOST", "localhost") %>
+  user: <%= ENV.fetch("DATABASE_USER", "postgres") %>
+  password: <%= ENV.fetch("DATABASE_PASSWORD", "postgres") %>
+default_email: <%= ENV.fetch("DEFAULT_EMAIL", "user@example.com") %>
+host: <%= ENV.fetch("HOST", "localhost") %>
+port: <%= ENV.fetch("PORT", "3000") %>
+rails_env: development
