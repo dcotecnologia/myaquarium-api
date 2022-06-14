@@ -247,7 +247,7 @@ GEM
     rubocop-performance (1.14.2)
       rubocop (>= 1.7.0, < 2.0)
       rubocop-ast (>= 0.4.0)
-    rubocop-rails (2.14.2)
+    rubocop-rails (2.15.0)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.7.0, < 2.0)
@@ -293,7 +293,7 @@ DEPENDENCIES
   rubocop-minitest (~> 0.20.0)
   rubocop-packaging (~> 0.5.1)
   rubocop-performance (~> 1.14.2)
-  rubocop-rails (~> 2.14.2)
+  rubocop-rails (~> 2.15.0)
   rubocop-rake (~> 0.6.0)
   tzinfo-data
 
