@@ -156,7 +156,7 @@ GEM
     marcel (1.0.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
-    minitest (5.15.0)
+    minitest (5.16.1)
     msgpack (1.5.2)
     net-imap (0.2.3)
       digest
@@ -247,7 +247,7 @@ GEM
     rubocop-performance (1.14.2)
       rubocop (>= 1.7.0, < 2.0)
       rubocop-ast (>= 0.4.0)
-    rubocop-rails (2.14.2)
+    rubocop-rails (2.15.1)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.7.0, < 2.0)
@@ -259,7 +259,7 @@ GEM
     timeout (0.3.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
-    unicode-display_width (2.1.0)
+    unicode-display_width (2.2.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     warden-jwt_auth (0.6.0)
@@ -293,7 +293,7 @@ DEPENDENCIES
   rubocop-minitest (~> 0.20.0)
   rubocop-packaging (~> 0.5.1)
   rubocop-performance (~> 1.14.2)
-  rubocop-rails (~> 2.14.2)
+  rubocop-rails (~> 2.15.1)
   rubocop-rake (~> 0.6.0)
   tzinfo-data
 
