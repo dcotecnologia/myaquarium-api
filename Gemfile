@@ -31,7 +31,7 @@ gem "bootsnap", require: false
 gem "rack-cors", "~> 1.1"
 
 # Authentication library
-gem "devise-jwt", "~> 0.9"
+gem "devise-jwt", "~> 0.10"
 gem "omniauth", "~> 2.1"
 
 # Organize secrets and env vars
