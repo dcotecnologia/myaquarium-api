@@ -45,7 +45,7 @@ group :development, :test do
   gem "rubocop", "~> 1.42.0", require: false
   gem "rubocop-minitest", "~> 0.20.0"
   gem "rubocop-packaging", "~> 0.5.1"
-  gem "rubocop-performance", "~> 1.14.2"
+  gem "rubocop-performance", "~> 1.15.2"
   gem "rubocop-rails", "~> 2.17.4"
   gem "rubocop-rake", "~> 0.6.0"
 end
