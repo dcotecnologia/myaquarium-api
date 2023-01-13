@@ -13,7 +13,7 @@ gem "rails", "~> 7.0.4"
 gem "pg", "~> 1.4"
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 5.0"
+gem "puma", "~> 6.0"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 gem "bcrypt", "~> 3.1.18"
