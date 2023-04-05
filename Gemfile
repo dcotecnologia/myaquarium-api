@@ -56,5 +56,5 @@ group :development do
 end
 
 group :test do
-  gem "dotenv-rails", "~> 2.1", ">= 2.1.1", require: "dotenv/rails-now"
+  gem "dotenv-rails", "~> 2.8", require: "dotenv/rails-now"
 end
