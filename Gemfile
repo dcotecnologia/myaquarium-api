@@ -43,7 +43,7 @@ group :development, :test do
   gem "bundler-audit", "~> 0.9"
   gem "debug", platforms: %i[mri mingw x64_mingw]
   gem "rubocop", "~> 1.49.0", require: false
-  gem "rubocop-minitest", "~> 0.29.0"
+  gem "rubocop-minitest", "~> 0.31.0"
   gem "rubocop-packaging", "~> 0.5.2"
   gem "rubocop-performance", "~> 1.16.0"
   gem "rubocop-rails", "~> 2.19.0"
